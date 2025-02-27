@@ -48,7 +48,7 @@ export default function SignIn() {
       </div>
       <div className="flex flex-1 md:flex-row">
       {/* Left Section - Image */}
-      <div className="relative hidden lg:flex w-full w-1/4 min-w-[480px]  p-2">
+      <div className="relative hidden lg:flex w-full w-1/4 min-w-[480px] max-w-[480px] p-2">
         <div 
           className="relative h-[400px] w-full md:h-[calc(100vh-1rem)] rounded-[20px] overflow-hidden"
           style={{
