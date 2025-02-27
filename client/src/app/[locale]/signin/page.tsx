@@ -4,7 +4,7 @@ import React, { useState } from "react"
 import Image from "next/image"
 import { MainButton } from "@/components/mainButton"
 import { Input } from "@/components/input"
-import { fontTitle1, fontBodyNormal, fontBodyLinkNormal, fontCaptionNormal, fontCaptionBold } from "@/styles/typography"
+import { fontTitle1, fontBodyNormal, fontBodyLinkNormal, fontCaptionNormal, fontCaptionBold, fontBigTypoDesktop } from "@/styles/typography"
 import { Checkbox } from "@/components/ui/checkbox"
 import { PasswordInput } from "@/components/passwordInput"
 import { AlertCircle } from "lucide-react"
@@ -24,7 +24,7 @@ export default function SignIn() {
 
   const handleSignIn = () => {
     if (!email.includes('@') || !email.includes('.')) {
-      setError('Email or paswword is incorrect')
+      setError('Email or password is incorrect')
       return
     }
     // Handle sign in
@@ -32,9 +32,23 @@ export default function SignIn() {
   }
 
   return (
-    <div className="flex min-h-screen w-full flex-col md:flex-row font-dm-sans bg-body-gradient-2" >
+    <div className=" flex flex-col min-h-screen w-full font-dm-sans bg-body-gradient-2" >
+    <div className="mb-6 flex flex-col items-center justify-center lg:hidden p-4">
+              <div className="flex items-center mb-2">
+                <Image
+                  src="/logo-icon.png"
+                  alt="Orderific Logo"
+                  width={50}
+                  height={50}
+                  className="w-[50px] h-auto"
+                  priority
+                /> <span className="ml-2 text-xl font-bold text-brand">Orderific</span>
+                </div>
+                <h2 className={`${fontTitle1}`}>Service Panel</h2>
+      </div>
+      <div className="flex flex-1 md:flex-row">
       {/* Left Section - Image */}
-      <div className="relative w-full md:w-4/12 p-2">
+      <div className="relative hidden lg:flex w-full w-1/4 min-w-[480px]  p-2">
         <div 
           className="relative h-[400px] w-full md:h-[calc(100vh-1rem)] rounded-[20px] overflow-hidden"
           style={{
@@ -45,8 +59,8 @@ export default function SignIn() {
           }}
         >
           {/* Brand orange overlay */}
-          <div className="absolute inset-0" style={{ backgroundColor: "rgba(255, 86, 52, 0.5)" }} />
-
+          <div className="absolute inset-0 bg-brand opacity-50" />
+          <div className="absolute bottom-0 left-0 right-0 h-1/2 opacity-50" style={{ background: "linear-gradient(180deg, rgba(0, 0, 0, 0.00) 0%, #000 50%, #000 100%)" }} />
           {/* Orderific Logo */}
           <div className="absolute top-6 left-6 z-10">
             <Image
@@ -61,8 +75,8 @@ export default function SignIn() {
 
           {/* Overlay text */}
           <div className="absolute bottom-0 left-0 w-full bg-gradient-to-t from-black-100/60 to-transparent p-6 text-white-100 z-10">
-            <h1 className={`mb-4 ${fontTitle1}`}>Service Panel</h1>
-            <p className={`${fontCaptionNormal} max-w-[90%]`}>
+            <h1 className={`mb-4 ${fontBigTypoDesktop}`}>Service Panel</h1>
+            <p className={`${fontBodyNormal} max-w-[90%]`}>
               Streamline your restaurant operations with BMS. Manage reservations,
               orders, inventory, and staff effortlessly, and focus on delivering
               exceptional dining experiences.
@@ -72,8 +86,7 @@ export default function SignIn() {
       </div>
 
       {/* Right Section - Sign In Form */}
-      <div 
-        className="flex w-full items-center justify-center px-4 py-8 md:w-8/12 md:px-8 lg:px-16">
+      <div className="flex w-full items-center justify-center px-4 py-4">
         
         <div className="w-full max-w-[360px] space-y-2">
           <div className="space-y-2 text-center">
@@ -153,6 +166,8 @@ export default function SignIn() {
           )}
         </div>
       </div>
+      </div>
+          
     </div>
   )
 }
