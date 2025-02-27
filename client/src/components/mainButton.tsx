@@ -17,7 +17,6 @@ const buttonVariants = cva(
         ready: "bg-status-ready text-white-100",
         served: "bg-status-served text-white-100",
         canceled: "bg-semantic-red-100 text-white-100",
-        disabled : "bg-black-40 text-black-4"
       },
     },
     defaultVariants: {
