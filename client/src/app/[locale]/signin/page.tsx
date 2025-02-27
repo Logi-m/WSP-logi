@@ -157,9 +157,9 @@ export default function SignIn() {
           </MainButton>
 
           {error && (
-            <div className="flex pt-2 ">
+            <div className="flex pt-2 items-center">
               <ErrorIcon /> 
-              <p className={`${fontCaptionNormal} text-semantic-red mt-1 pl-1`}>
+              <p className={`${fontCaptionNormal} text-semantic-red pl-1`}>
               {error}
               </p>
             </div>
