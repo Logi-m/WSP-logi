@@ -6,7 +6,7 @@ import Link from 'next/link'
 import { Input } from '@/components/ui/input'
 import { PasswordInput } from '@/components/ui/password-input'
 import { Checkbox } from '@/components/ui/checkbox'
-import { Button } from '@/components/ui/button'
+import { MainButton } from '@/components/mainButton'
 import {
   fontBigTypoDesktop,
   fontTitle1,
@@ -28,7 +28,7 @@ export default function LoginPage() {
   }
 
   return (
-    <div className="min-h-screen w-full flex flex-col lg:flex-row p-4 font-dm-sans">
+    <div className="min-h-screen w-full flex flex-col lg:flex-row p-2 font-dm-sans">
       {/* Left Column - Hidden on mobile */}
       <div className="hidden lg:flex lg:w-[40%] max-w-[480px] relative rounded-[var(--round-6)] overflow-hidden">
         <div className="absolute inset-0 bg-[url('/signin.png')] bg-cover bg-top bg-no-repeat" />
@@ -59,8 +59,8 @@ export default function LoginPage() {
         </div>
 
         {/* Form Section */}
-        <div className="flex-1 flex flex-col justify-center w-full max-w-[480px] mx-auto">
-          <div className="text-center mb-8">
+        <div className="flex-1 flex flex-col justify-center w-full max-w-[360px] mx-auto">
+          <div className="text-center mb-4">
             <h1 className={`${fontTitle1} mb-2`}>Welcome Back</h1>
             <p className={`${fontBodyNormal} text-black/60`}>
               Manage, streamline, and thrive effortlessly.
@@ -69,7 +69,7 @@ export default function LoginPage() {
 
           <form onSubmit={handleSubmit} className="w-full space-y-4">
             <div className="space-y-2">
-              <label className={`${fontCaptionBold} text-gray-700 pl-4 block`}>
+              <label className={`${fontCaptionBold} text-black-60 pl-4 block`}>
                 Email
               </label>
               <Input
@@ -82,7 +82,7 @@ export default function LoginPage() {
             </div>
 
             <div className="space-y-2">
-              <label className={`${fontCaptionBold} text-gray-700 pl-4 block`}>
+              <label className={`${fontCaptionBold} text-black-60 pl-4 block`}>
                 Password
               </label>
               <PasswordInput
@@ -93,7 +93,7 @@ export default function LoginPage() {
               />
             </div>
 
-            <div className="flex items-center justify-between pt-2">
+            <div className="flex items-center justify-between">
               <div className="flex items-center">
                 <Checkbox
                   variant="custom"
@@ -113,7 +113,7 @@ export default function LoginPage() {
               </Link>
             </div>
 
-            <Button
+            <MainButton
               type="submit"
               className={`w-full py-3 px-4 rounded-[30px] mt-4 ${
                 isFormValid
@@ -123,7 +123,7 @@ export default function LoginPage() {
               disabled={!isFormValid}
             >
               Sign In
-            </Button>
+            </MainButton>
           </form>
         </div>
       </div>
