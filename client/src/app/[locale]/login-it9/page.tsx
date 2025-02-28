@@ -99,7 +99,7 @@ export default function LoginPage() {
                   variant="custom"
                   checked={rememberMe}
                   onCheckedChange={(checked) => setRememberMe(checked as boolean)}
-                  className="bg-[#00A82D]"
+                  
                 />
                 <label className={`${fontBodyNormal} text-gray-700 ml-2`}>
                   Remember me
