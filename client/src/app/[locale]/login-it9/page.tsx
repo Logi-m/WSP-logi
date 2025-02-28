@@ -113,9 +113,7 @@ export default function LoginPage() {
               </Link>
             </div>
 
-            <MainButton
-              type="submit"
-              className={`w-full py-3 px-4 rounded-[30px] mt-4 ${
+            <MainButton variant="primary" type="submit" className={`w-full py-3 px-4 rounded-[30px] mt-4 ${
                 isFormValid
                   ? 'bg-black text-white hover:opacity-90'
                   : 'bg-black/5 text-black/40 cursor-not-allowed'
