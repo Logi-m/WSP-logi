@@ -16,9 +16,15 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
         <input
           type={type}
           className={`block w-full h-[48px] rounded-[30px] px-4 
-            appearance-none border border-black/10 bg-white/60
-            text-black placeholder:text-black/40
-            focus:outline-none focus:border-black/20
+            ${variant === "signin" ? `
+              border border-black/10 bg-white/60
+              text-black placeholder:text-black/40
+              focus:outline-none focus:border-black/20
+            ` : `
+              appearance-none border border-black/10 bg-white/60
+              text-black placeholder:text-black/40
+              focus:outline-none focus:border-black/20
+            `}
             ${className}`}
           placeholder={placeholder}
           ref={ref}
