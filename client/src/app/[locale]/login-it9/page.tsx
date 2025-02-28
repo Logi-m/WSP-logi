@@ -52,7 +52,7 @@ export default function LoginPage() {
         {/* Mobile Logo Section */}
         <div className="lg:hidden flex flex-col items-center pt-4">
           <div className="flex items-center space-x-2">
-            <Image src="/OrangeLogo.png" alt="Logo" width={53.2} height={38.97} />
+            <Image src="/OrangeLogo.svg" alt="Logo" width={53.2} height={38.97} />
             <span className={`${fontTitle2} text-brand`}>Orderific</span>
           </div>
           <h2 className={`${fontTitle1} text-black-100 mt-2`}>Service Panel</h2>
