@@ -11,6 +11,7 @@ import {
   fontTitle1,
   fontTitle2,
   fontBodyNormal,
+  fontCaptionBold,
 } from '@/styles/typography'
 
 export default function SignInOTPPage() {
@@ -117,8 +118,8 @@ export default function SignInOTPPage() {
             <p className={`${fontBodyNormal} text-black/60`}>
               Manage, streamline, and thrive effortlessly.
             </p>
-            <p className="mt-4">
-              <span className="font-bold">Enter</span> 6 digit pin
+            <p className={`mt-4 text-black/60 ${fontCaptionBold}`}>
+              <span>Enter</span><span className="font-normal"> 6 digit pin</span>
             </p>
           </div>
 
