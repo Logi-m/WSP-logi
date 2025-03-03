@@ -27,6 +27,7 @@ const mockRiders: Rider[] = [
     name: "Nasser Alsubai",
     time: "9 Feb 2024 — 10:24",
     image: "/rider.png",
+    otp: "674951",
     otpStatus: 'received'
   },
   {
