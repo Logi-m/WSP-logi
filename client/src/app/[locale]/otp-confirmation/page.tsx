@@ -8,7 +8,7 @@ import { MainButton } from "@/components/mainButton"
 import IconWrapper from "@/components/iconWrapper"
 import SearchInput from "@/components/searchInput"
 import { Badge } from "@/components/badge"
-import { fontBodyBold, fontBodyNormal, fontTitle1, fontTitle3 } from "@/styles/typography"
+import { fontBodyBold, fontBodyNormal, fontTitle1, fontTitle3,  fontCaptionNormal } from "@/styles/typography"
 
 interface Rider {
   id: string
@@ -92,9 +92,9 @@ export default function OTPConfirmationPage() {
   }
 
   return (
-    <main className="h-screen w-full flex flex-col overflow-hidden">
+    <main className="h-screen w-full flex flex-col overflow-hidden pt-5">
       {/* Header */}
-      <header className="h-16 flex items-center px-6">
+      <header className="flex items-center px-6">
         <h1 className={cn(fontTitle1, "text-black-100")}>OTP Confirmation</h1>
       </header>
 
@@ -104,37 +104,51 @@ export default function OTPConfirmationPage() {
           {/* Left Panel */}
           <div className="flex h-full w-[360px] flex-col border-r border-black-10">
             {/* Search Header */}
-            <div className="sticky top-0 z-10 relative h-[60px] ">
+            <div className="h-[60px] relative">
+              {/* Title and Badge */}
               <div className={cn(
-                "absolute inset-0 px-4 flex items-center justify-between transition-opacity duration-200",
-                isSearchExpanded ? "opacity-0 pointer-events-none" : "opacity-100"
+                "absolute inset-0 px-4 flex items-center justify-between",
+                "transition-all duration-500 ease-in-out",
+                isSearchExpanded 
+                  ? "opacity-0 invisible" 
+                  : "opacity-100 visible"
               )}>
                 <div className="flex items-center gap-2">
                   <span className={cn(fontBodyBold, "text-black-100")}>Pending</span>
-                  <Badge variant="black" size="small" count={1} />
+                  <div className="flex h-5 w-5 items-center justify-center rounded-full bg-black">
+                    <span className={cn(fontCaptionNormal, "text-white")}>{mockRiders.length}</span>
+                  </div>
                 </div>
                 <button
                   onClick={handleSearchToggle}
-                  className="w-[48px] h-[48px] rounded-full flex items-center justify-center border border-black-10 hover:shadow-sm transition-all duration-200"
+                  className="w-[48px] h-[48px] rounded-full flex items-center justify-center border border-black-10 hover:bg-black-5 transition-colors duration-200"
                 >
                   <IconWrapper Component={SearchIcon} size="24" color="black100" />
                 </button>
               </div>
 
+              {/* Search Input */}
               <div className={cn(
-                "absolute inset-0 px-4 flex items-center transition-opacity duration-200",
-                isSearchExpanded ? "opacity-100" : "opacity-0 pointer-events-none"
+                "absolute inset-0 px-4 flex items-center",
+                "transition-all duration-500 ease-in-out",
+                isSearchExpanded 
+                  ? "opacity-100 visible" 
+                  : "opacity-0 invisible pointer-events-none"
               )}>
-                <div className="relative flex-1">
+                <div className="relative w-full">
                   <SearchInput
                     query={searchQuery}
-                    setQuery={(value) => setSearchQuery(value)}
+                    setQuery={(value) => {
+                      setSearchQuery(value)
+                      if (!value) {
+                        handleSearchClose()
+                      }
+                    }}
                     className="shadow-[0_0_0_1px_rgba(0,0,0,0.06),0_8px_16px_-6px_rgba(0,0,0,0.2)]"
                     width="w-full"
                     alwaysOpen={true}
-                    autoComplete={false}
                     onFocusChange={(focused) => {
-                      if (!focused) {
+                      if (!focused && !searchQuery) {
                         handleSearchClose()
                       }
                     }}
