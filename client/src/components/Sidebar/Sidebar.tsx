@@ -20,9 +20,8 @@ const Sidebar: React.FC<{ children: React.ReactNode }> = ({ children }) => {
 
   const pathname = usePathname()
 
-  //const { pendingCount } = useOtpNotifications(brandId || "")
+ // const { pendingCount } = useOtpNotifications(brandId || "")
   const pendingCount = 0
-
   const currentRoute = routes.find((route) => route.href === pathname)
 
   if (
@@ -77,7 +76,7 @@ const Sidebar: React.FC<{ children: React.ReactNode }> = ({ children }) => {
             isActive={pathname === item.href}
           />
         </Link>
-       {showBadge && pendingCount > 0 && (
+        {showBadge && pendingCount > 0 && (
           <Badge
             count={pendingCount}
             className={cn(badgeClasses)}
@@ -91,7 +90,12 @@ const Sidebar: React.FC<{ children: React.ReactNode }> = ({ children }) => {
 
   return (
     <div className="flex h-full w-full bg-transparent text-black-100">
-      <div className="fixed z-50 flex h-full w-24 flex-col items-center justify-between bg-transparent py-4">
+      <div className={cn(
+        "lg:fixed z-50 flex lg:h-full lg:left-0 lg:w-24 lg:flex-col lg:my-0",
+        "fixed flex-row w-auto top-0 left-[16px] right-[16px] bottom-auto h-[64px] rounded-6 my-4",
+        "items-center justify-between bg-transparent py-4",
+        "bg-white-100 lg:bg-transparent",
+      )}>
         <Image
           src="/logo.png"
           alt="logo"
@@ -99,19 +103,26 @@ const Sidebar: React.FC<{ children: React.ReactNode }> = ({ children }) => {
           height={64}
           className="h-16 w-16"
         />
-        <div className="relative z-50 flex w-fit flex-col gap-2 rounded-6 bg-black-100 px-2 py-2">
+        <div className={cn(
+          "fixed left-1/2 bottom-[32px] top-auto h-[64px] w-auto flex-row -translate-x-1/2",
+          "lg:left-auto lg:bottom-auto lg:auto lg:flex-col lg:w-fit lg:-translate-x-0 lg:h-auto",
+          "lg:relative z-50 flex gap-2 rounded-6 bg-black-100 px-2 py-2"
+        )}>
           {routes
             .filter((route) => route.includeMainSidebar)
             .map((item, index) => renderMainSidebarButton(item, index))}
         </div>
 
-        <div className="z-10 flex w-fit flex-col gap-2 rounded-6 bg-white-100 px-2 py-2">
+        <div className="z-10 flex w-fit flex-row lg:flex-col gap-2 rounded-6 bg-white-100 px-2 py-2">
           {routes
             .filter((route) => route.includeSecondarySidebar)
             .map((item, index) => renderSecondaySidebarButton(item, index))}
         </div>
       </div>
-      <div className="ml-20 flex flex-grow flex-col overflow-auto">
+      <div className={cn(
+        "pt-20 ml-0",
+        "lg:ml-20 lg:pt-0 flex flex-grow flex-col overflow-auto"
+      )}>
         {children}
       </div>
     </div>
