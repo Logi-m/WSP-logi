@@ -1,5 +1,5 @@
 import { env } from "@/env.mjs"
-//import { OtpNotification } from "@/types/interfaces/otp-notifications.interface"
+import { OtpNotification } from "@/types/interfaces/otp-notifications.interface"
 import { cn, formatDateTime } from "@/lib/utils"
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 import Spinner from "@/components/spinner"

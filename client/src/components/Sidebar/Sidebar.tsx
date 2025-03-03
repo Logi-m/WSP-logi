@@ -7,7 +7,7 @@ import { Link, usePathname } from "@/i18n/routing"
 import { useAuth } from "@/providers/AuthProvider/AuthProvider"
 import { useFullscreen } from "@/providers/FullscreenProvider"
 
-import { useOtpNotifications } from "@/lib/hooks/utilityHooks/useOtpNotifications"
+//import { useOtpNotifications } from "@/lib/hooks/utilityHooks/useOtpNotifications"
 import { cn } from "@/lib/utils"
 import { IconButton } from "@/components/iconButton"
 import { ProfileButton } from "@/components/ProfileButton"
@@ -20,7 +20,8 @@ const Sidebar: React.FC<{ children: React.ReactNode }> = ({ children }) => {
 
   const pathname = usePathname()
 
-  const { pendingCount } = useOtpNotifications(brandId || "")
+  //const { pendingCount } = useOtpNotifications(brandId || "")
+  const pendingCount = 0
 
   const currentRoute = routes.find((route) => route.href === pathname)
 
@@ -76,7 +77,7 @@ const Sidebar: React.FC<{ children: React.ReactNode }> = ({ children }) => {
             isActive={pathname === item.href}
           />
         </Link>
-        {showBadge && pendingCount > 0 && (
+       {showBadge && pendingCount > 0 && (
           <Badge
             count={pendingCount}
             className={cn(badgeClasses)}

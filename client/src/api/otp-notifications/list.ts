@@ -1,6 +1,6 @@
 import { apiRequest } from "@/api/Api"
 
-import { OtpNotification } from "@/types/interfaces/otp-notifications.interface"
+//import { OtpNotification } from "@/types/interfaces/otp-notifications.interface"
 
 export enum ServiceProvider {
   Twilio = 1,
@@ -42,7 +42,7 @@ export interface GetOtpNotificationsParams {
 export interface GetOtpNotificationsResponse {
   success: boolean
   message: string
-  data: OtpNotification[]
+  data: []
   cached: boolean
   execution_time: string
   current_page: number

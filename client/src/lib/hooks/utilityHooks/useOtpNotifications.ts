@@ -1,4 +1,4 @@
-import { useEffect } from "react"
+/*import { useEffect } from "react"
 import { OtpMode, ServiceProvider } from "@/api/otp-notifications/list"
 import { WebsocketInstances } from "@/constants/websocketInstances"
 import { Channel, useWebSocketContext } from "@/providers/WebSocketProvider"
@@ -57,3 +57,4 @@ export const useOtpNotifications = (brandId: string | undefined) => {
 
   return { pendingCount }
 }
+*/
