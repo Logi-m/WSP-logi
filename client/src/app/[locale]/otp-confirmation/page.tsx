@@ -76,9 +76,19 @@ const mockRiders: Rider[] = [
 export default function OTPConfirmationPage() {
   const [searchQuery, setSearchQuery] = useState("")
   const [selectedRider, setSelectedRider] = useState<Rider | null>(mockRiders[0]) // Set first rider as selected by default
+  const [isSearchExpanded, setIsSearchExpanded] = useState(false)
 
   const handleClose = () => {
     setSelectedRider(null)
+  }
+
+  const handleSearchToggle = () => {
+    setIsSearchExpanded(!isSearchExpanded)
+  }
+
+  const handleSearchClose = () => {
+    setIsSearchExpanded(false)
+    setSearchQuery("")
   }
 
   return (
@@ -94,17 +104,43 @@ export default function OTPConfirmationPage() {
           {/* Left Panel */}
           <div className="flex h-full w-[360px] flex-col border-r border-black-10">
             {/* Search Header */}
-            <div className="h-[60px] px-4 flex items-center justify-between">
-              <div className="flex items-center gap-2">
-                <span className={cn(fontBodyBold, "text-black-100")}>Pending</span>
-                <Badge variant="black" size="small" count={1} />
+            <div className="sticky top-0 z-10 relative h-[60px] ">
+              <div className={cn(
+                "absolute inset-0 px-4 flex items-center justify-between transition-opacity duration-200",
+                isSearchExpanded ? "opacity-0 pointer-events-none" : "opacity-100"
+              )}>
+                <div className="flex items-center gap-2">
+                  <span className={cn(fontBodyBold, "text-black-100")}>Pending</span>
+                  <Badge variant="black" size="small" count={1} />
+                </div>
+                <button
+                  onClick={handleSearchToggle}
+                  className="w-[48px] h-[48px] rounded-full flex items-center justify-center border border-black-10 hover:shadow-sm transition-all duration-200"
+                >
+                  <IconWrapper Component={SearchIcon} size="24" color="black100" />
+                </button>
               </div>
-              <SearchInput
-                query={searchQuery}
-                setQuery={setSearchQuery}
-                width="w-64"
-                className="ml-auto"
-              />
+
+              <div className={cn(
+                "absolute inset-0 px-4 flex items-center transition-opacity duration-200",
+                isSearchExpanded ? "opacity-100" : "opacity-0 pointer-events-none"
+              )}>
+                <div className="relative flex-1">
+                  <SearchInput
+                    query={searchQuery}
+                    setQuery={(value) => setSearchQuery(value)}
+                    className="shadow-[0_0_0_1px_rgba(0,0,0,0.06),0_8px_16px_-6px_rgba(0,0,0,0.2)]"
+                    width="w-full"
+                    alwaysOpen={true}
+                    autoComplete={false}
+                    onFocusChange={(focused) => {
+                      if (!focused) {
+                        handleSearchClose()
+                      }
+                    }}
+                  />
+                </div>
+              </div>
             </div>
 
             {/* Riders List */}
@@ -159,7 +195,7 @@ export default function OTPConfirmationPage() {
             {selectedRider ? (
               <>
                 {/* Header with Close Button */}
-                <div className="h-[60px] px-4 flex items-center border-black-10">
+                <div className="sticky top-0 z-10 h-[60px] px-4 flex items-center border-black-10 bg-white">
                   <button
                     onClick={handleClose}
                     className={cn(
@@ -172,7 +208,7 @@ export default function OTPConfirmationPage() {
                 </div>
 
                 {/* Selected Rider Content */}
-                <div className="h-[calc(100%-60px)] overflow-y-auto masonry-scroll-container">
+                <div className="h-[calc(100%-60px)] overflow-y-auto masonry-scroll-container bg-white">
                   <div className="max-w-[600px] mx-auto py-12 px-8 flex flex-col items-center">
                     <div className="h-[120px] w-[120px] rounded-full bg-black-5 mb-4 flex items-center justify-center">
                       {selectedRider.image ? (

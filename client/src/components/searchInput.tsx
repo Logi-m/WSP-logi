@@ -49,10 +49,12 @@ const SearchInput: React.FC<SearchInputProps> = ({
         onFocus={() => handleFocus(true)}
         onBlur={() => handleFocus(false)}
         onClear={() => setQuery("")}
+        variant="search"
         className={cn(
           isExpanded
             ? "pl-4 pr-1"
-            : "cursor-pointer bg-transparent pl-0 pr-0 text-center"
+            : "cursor-pointer bg-transparent pl-0 pr-0 text-center",
+          className
         )}
       />
       {!isExpanded && (

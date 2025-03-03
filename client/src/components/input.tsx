@@ -12,7 +12,7 @@ export interface InputProps
   onChange: (event: React.ChangeEvent<HTMLInputElement>) => void
   onClear?: () => void
   icon?: React.FC<React.SVGProps<SVGSVGElement>>
-  variant?: "default" | "signin"
+  variant?: "default" | "signin" | "search"
 }
 
 const Input = React.forwardRef<HTMLInputElement, InputProps>(
@@ -52,6 +52,46 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
                 "h-[48px] rounded-6 text-black-100",
                 "focus:outline-none focus:border-black-10",
                 icon ? "pl-14" : "px-4",
+                className
+              )}
+              placeholder={placeholder}
+              ref={ref}
+              value={value}
+              onChange={onChange}
+              {...props}
+            />
+            {value && onClear && (
+              <div
+                className="absolute inset-y-0 right-4 flex cursor-pointer items-center"
+                onClick={onClear}
+              >
+                <IconWrapper Component={CloseIcon} size="20" color="black100" />
+              </div>
+            )}
+          </div>
+        </div>
+      )
+    }
+
+    if (variant === "search") {
+      return (
+        <div className={cn("relative w-full", extraStyles)}>
+          <div className="relative flex items-center">
+            {icon && (
+              <div className="absolute flex items-center justify-center">
+                <div className="rounded-full bg-black-5 p-3">
+                  <IconWrapper Component={icon} size="24" color="black100" />
+                </div>
+              </div>
+            )}
+            <input
+              id={inputId}
+              type={type}
+              className={cn(
+                "block w-full appearance-none border border-black-10 bg-white text-black-100 placeholder:text-black-40",
+                "h-[48px] rounded-full",
+                "focus:outline-none focus:border-black-10 focus:ring-0",
+                icon ? "pl-14" : "px-6",
                 className
               )}
               placeholder={placeholder}
