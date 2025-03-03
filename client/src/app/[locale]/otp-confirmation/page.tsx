@@ -270,7 +270,7 @@ export default function OTPConfirmationPage() {
                         <p className={cn(fontBodyNormal, "text-black-60 mb-2")}>Order Number</p>
                         <p className={cn(fontTitle1, "text-black-40 mb-8")}>{selectedRider.orderNumber}</p>
                         <p className={cn(fontBodyNormal, "text-black-100 text-center mb-6")}>
-                          The OTP code has been entered correctly. Now, collect the cash and click on the <span className={cn(fontBodyBold, "text-black-100")}>'Accept Cash Transfer'</span> button.
+                          The OTP code has been entered correctly. Now, collect the cash and click on the <span className={cn(fontBodyBold, "text-black-100")}>&apos;Accept Cash Transfer&apos;</span> button.
                         </p>
                         <p className={cn(fontBodyNormal, "text-black-100 text-center mb-2")}>
                           The amount you should receive:
@@ -292,7 +292,7 @@ export default function OTPConfirmationPage() {
                         </p>
                         
                         <p className={cn(fontBodyNormal, "text-black-100 text-center mb-6")}>
-                          The OTP code has been entered correctly. Now, collect the cash and click on the <span className={cn(fontBodyBold, "text-black-100")}>'Accept Cash Transfer'</span> button.
+                          The OTP code has been entered correctly. Now, collect the cash and click on the <span className={cn(fontBodyBold, "text-black-100")}>&apos;Accept Cash Transfer&apos;</span> button.
                         </p>
 
                         <p className={cn(fontBodyNormal, "text-black-100 text-center mb-2")}>
