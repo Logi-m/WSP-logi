@@ -108,7 +108,7 @@ export default function OTPConfirmationPage() {
             </div>
 
             {/* Riders List */}
-            <div className="flex-1 overflow-y-auto custom-scrollbar divide-y divide-black-10">
+            <div className="flex-1 overflow-y-auto masonry-scroll-container divide-y divide-black-10">
               {mockRiders.map((rider) => (
                 <div
                   key={rider.id}
@@ -172,7 +172,7 @@ export default function OTPConfirmationPage() {
                 </div>
 
                 {/* Selected Rider Content */}
-                <div className="h-[calc(100%-60px)] overflow-y-auto custom-scrollbar">
+                <div className="h-[calc(100%-60px)] overflow-y-auto masonry-scroll-container">
                   <div className="max-w-[600px] mx-auto py-12 px-8 flex flex-col items-center">
                     <div className="h-[120px] w-[120px] rounded-full bg-black-5 mb-4 flex items-center justify-center">
                       {selectedRider.image ? (
