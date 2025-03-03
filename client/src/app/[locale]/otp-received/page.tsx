@@ -13,6 +13,7 @@ import {
   fontCaptionNormal,
   fontBodyLinkNormal,
 } from "@/styles/typography"
+import SearchInput from "@/components/SearchInput/SearchInput"
 
 interface Rider {
   id: string
@@ -24,7 +25,6 @@ interface Rider {
 }
 
 export default function OTPConfirmationPage() {
-  const [searchExpanded, setSearchExpanded] = useState(false)
   const [searchQuery, setSearchQuery] = useState("")
   const [selectedRider, setSelectedRider] = useState<Rider | null>(null)
 
@@ -61,46 +61,11 @@ export default function OTPConfirmationPage() {
                 </div>
               </div>
 
-              {/* Search Input */}
-              <div className="relative">
-                <button
-                  className={cn(
-                    "flex h-12 items-center justify-center rounded-full transition-all duration-500 ease-out",
-                    searchExpanded ? "w-full bg-white/60" : "w-12 bg-transparent"
-                  )}
-                  onClick={() => setSearchExpanded(true)}
-                >
-                  <svg
-                    className="h-6 w-6 text-black-100"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
-                    />
-                  </svg>
-                </button>
-                <input
-                  type="text"
-                  className={cn(
-                    fontBodyNormal,
-                    "absolute left-0 top-0 h-12 w-full rounded-full border border-black-10 bg-white/60 pl-12 pr-4 text-black-100 placeholder-black-40 outline-none transition-all duration-500 ease-out",
-                    searchExpanded
-                      ? "translate-x-0 opacity-100"
-                      : "translate-x-full opacity-0 pointer-events-none"
-                  )}
-                  placeholder="Search riders..."
-                  value={searchQuery}
-                  onChange={(e) => setSearchQuery(e.target.value)}
-                  onBlur={() => {
-                    if (!searchQuery) setSearchExpanded(false)
-                  }}
-                />
-              </div>
+              <SearchInput
+                value={searchQuery}
+                onChange={setSearchQuery}
+                placeholder="Search riders..."
+              />
             </div>
 
             {/* Riders List */}
