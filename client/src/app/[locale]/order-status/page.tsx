@@ -52,7 +52,7 @@ export default function OrderStatus() {
               className="object-contain"
             />
           </div>
-          <span className={cn(fontHeadline, "text-black-100 font-normal")}>McDonald's</span>
+          <span className={cn(fontHeadline, "text-black-100 font-normal")}>McDonald&apos;s</span>
         </div>
         <span className={cn(fontTitle1, "text-black-100")}>
           {format(currentTime, 'HH:mm')}
