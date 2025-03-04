@@ -1,7 +1,11 @@
 /** @type {import('next').NextConfig} */
 import createNextIntlPlugin from "next-intl/plugin"
+import path from 'path'
+import { fileURLToPath } from 'url'
 
 const withNextIntl = createNextIntlPlugin()
+const __filename = fileURLToPath(import.meta.url)
+const __dirname = path.dirname(__filename)
 
 const nextConfig = {
   images: {
@@ -20,6 +24,14 @@ const nextConfig = {
       },
     ],
     domains: ['www.publiish.io'],
+  },
+  transpilePackages: ['@tanstack/react-query', '@tanstack/query-core'],
+  webpack: (config) => {
+    config.resolve.alias = {
+      ...config.resolve.alias,
+      '@tanstack/react-query': path.resolve(__dirname, 'node_modules/@tanstack/react-query'),
+    }
+    return config
   },
 }
 
