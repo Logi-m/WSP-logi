@@ -1,6 +1,8 @@
 {
   "dependencies": {
     "@radix-ui/react-checkbox": "^1.1.4",
+    "@tanstack/react-query": "^5.67.1",
+    "@tanstack/react-query-devtools": "^5.67.1",
     "lucide-react": "^0.476.0"
   }
 }
