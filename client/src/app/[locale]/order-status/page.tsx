@@ -45,7 +45,7 @@ export default function OrderStatus() {
         <div className="flex items-center gap-3">
           <div className="w-12 h-12 bg-[#DA291C] rounded-lg flex items-center justify-center">
             <Image
-              src="/rider.png"
+              src="/mcdonalds-logo.png"
               alt="McDonald's"
               width={36}
               height={36}
