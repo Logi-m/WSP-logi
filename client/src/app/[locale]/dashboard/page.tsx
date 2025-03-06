@@ -171,9 +171,9 @@ export default function DashboardPage() {
       </div>
 
       {/* Charts Section */}
-      <div className="flex flex-col md:flex-row gap-4 py-4">
-        {/* A. Popular Items */}
-        <div className="w-full md:w-1/2 lg:w-1/3 ">
+      <div className="grid flex-1 grid-cols-1 gap-2 lg:grid-cols-3 ">
+        {/* Left Column - Popular Items */}
+        <div className="col-span-1">
           <PopularItems
             startDate="2024-03-01"
             endDate="2024-03-07"
@@ -182,7 +182,7 @@ export default function DashboardPage() {
         </div>
 
         {/* B. Charts Column */}
-        <div className="w-full md:w-1/2 lg:w-2/3 flex flex-col gap-4">
+        <div className="col-span-1 flex flex-col gap-2 lg:col-span-2">
           {/* 1. Completed Orders Chart */}
           <div className="w-full">
             <CompletedOrdersChart
