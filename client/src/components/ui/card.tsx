@@ -1,5 +1,6 @@
 import * as React from "react"
 
+import { fontTitle1 } from "@/styles/typography"
 import { cn } from "@/lib/utils"
 
 const Card = React.forwardRef<
@@ -36,7 +37,8 @@ const CardTitle = React.forwardRef<
   <div
     ref={ref}
     className={cn(
-      "text-2xl font-semibold leading-none tracking-tight",
+      fontTitle1,
+      "leading-none tracking-tight",
       className
     )}
     {...props}
